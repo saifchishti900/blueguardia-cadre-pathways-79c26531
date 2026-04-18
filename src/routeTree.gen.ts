@@ -9,38 +9,188 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VisionRouteImport } from './routes/vision'
+import { Route as TrainingRouteImport } from './routes/training'
+import { Route as TrainersRouteImport } from './routes/trainers'
+import { Route as SuccessStoriesRouteImport } from './routes/success-stories'
+import { Route as ReviewsRouteImport } from './routes/reviews'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CareersSocAnalystRouteImport } from './routes/careers.soc-analyst'
+import { Route as CareersPentesterRouteImport } from './routes/careers.pentester'
 
+const VisionRoute = VisionRouteImport.update({
+  id: '/vision',
+  path: '/vision',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrainingRoute = TrainingRouteImport.update({
+  id: '/training',
+  path: '/training',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrainersRoute = TrainersRouteImport.update({
+  id: '/trainers',
+  path: '/trainers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuccessStoriesRoute = SuccessStoriesRouteImport.update({
+  id: '/success-stories',
+  path: '/success-stories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CareersSocAnalystRoute = CareersSocAnalystRouteImport.update({
+  id: '/careers/soc-analyst',
+  path: '/careers/soc-analyst',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersPentesterRoute = CareersPentesterRouteImport.update({
+  id: '/careers/pentester',
+  path: '/careers/pentester',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/reviews': typeof ReviewsRoute
+  '/success-stories': typeof SuccessStoriesRoute
+  '/trainers': typeof TrainersRoute
+  '/training': typeof TrainingRoute
+  '/vision': typeof VisionRoute
+  '/careers/pentester': typeof CareersPentesterRoute
+  '/careers/soc-analyst': typeof CareersSocAnalystRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/reviews': typeof ReviewsRoute
+  '/success-stories': typeof SuccessStoriesRoute
+  '/trainers': typeof TrainersRoute
+  '/training': typeof TrainingRoute
+  '/vision': typeof VisionRoute
+  '/careers/pentester': typeof CareersPentesterRoute
+  '/careers/soc-analyst': typeof CareersSocAnalystRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/reviews': typeof ReviewsRoute
+  '/success-stories': typeof SuccessStoriesRoute
+  '/trainers': typeof TrainersRoute
+  '/training': typeof TrainingRoute
+  '/vision': typeof VisionRoute
+  '/careers/pentester': typeof CareersPentesterRoute
+  '/careers/soc-analyst': typeof CareersSocAnalystRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/contact'
+    | '/reviews'
+    | '/success-stories'
+    | '/trainers'
+    | '/training'
+    | '/vision'
+    | '/careers/pentester'
+    | '/careers/soc-analyst'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/contact'
+    | '/reviews'
+    | '/success-stories'
+    | '/trainers'
+    | '/training'
+    | '/vision'
+    | '/careers/pentester'
+    | '/careers/soc-analyst'
+  id:
+    | '__root__'
+    | '/'
+    | '/contact'
+    | '/reviews'
+    | '/success-stories'
+    | '/trainers'
+    | '/training'
+    | '/vision'
+    | '/careers/pentester'
+    | '/careers/soc-analyst'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactRoute: typeof ContactRoute
+  ReviewsRoute: typeof ReviewsRoute
+  SuccessStoriesRoute: typeof SuccessStoriesRoute
+  TrainersRoute: typeof TrainersRoute
+  TrainingRoute: typeof TrainingRoute
+  VisionRoute: typeof VisionRoute
+  CareersPentesterRoute: typeof CareersPentesterRoute
+  CareersSocAnalystRoute: typeof CareersSocAnalystRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/vision': {
+      id: '/vision'
+      path: '/vision'
+      fullPath: '/vision'
+      preLoaderRoute: typeof VisionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/training': {
+      id: '/training'
+      path: '/training'
+      fullPath: '/training'
+      preLoaderRoute: typeof TrainingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trainers': {
+      id: '/trainers'
+      path: '/trainers'
+      fullPath: '/trainers'
+      preLoaderRoute: typeof TrainersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/success-stories': {
+      id: '/success-stories'
+      path: '/success-stories'
+      fullPath: '/success-stories'
+      preLoaderRoute: typeof SuccessStoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +198,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/careers/soc-analyst': {
+      id: '/careers/soc-analyst'
+      path: '/careers/soc-analyst'
+      fullPath: '/careers/soc-analyst'
+      preLoaderRoute: typeof CareersSocAnalystRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/careers/pentester': {
+      id: '/careers/pentester'
+      path: '/careers/pentester'
+      fullPath: '/careers/pentester'
+      preLoaderRoute: typeof CareersPentesterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
+  ReviewsRoute: ReviewsRoute,
+  SuccessStoriesRoute: SuccessStoriesRoute,
+  TrainersRoute: TrainersRoute,
+  TrainingRoute: TrainingRoute,
+  VisionRoute: VisionRoute,
+  CareersPentesterRoute: CareersPentesterRoute,
+  CareersSocAnalystRoute: CareersSocAnalystRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
