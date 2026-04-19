@@ -55,8 +55,15 @@ export function SiteHeader() {
         }`}
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-10 flex items-center justify-between h-20">
-          <Link to="/" className="flex items-center gap-2 group">
-            <img src={logo} alt="BlueGuardia" className="h-9 w-auto" />
+          <Link to="/" className="flex items-center gap-2.5 group">
+            <img
+              src={logo}
+              alt="BlueGuardia"
+              className="h-12 w-auto drop-shadow-[0_0_18px_hsl(var(--primary)/0.55)] transition-transform duration-300 group-hover:scale-105"
+            />
+            <span className="hidden sm:inline text-lg font-semibold tracking-tight text-foreground">
+              Blue<span className="text-primary">Guardia</span>
+            </span>
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1">
