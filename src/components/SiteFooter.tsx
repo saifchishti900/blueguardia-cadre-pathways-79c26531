@@ -19,6 +19,20 @@ export function SiteFooter() {
             Cybersecurity training built by practitioners. Forging the next generation
             of SOC Analysts and Penetration Testers.
           </p>
+          <div className="mt-6 flex items-center gap-3">
+            {socials.map(({ href, label, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border/60 bg-surface/40 text-muted-foreground transition-colors hover:border-primary/60 hover:text-primary"
+              >
+                <Icon className="h-4 w-4" />
+              </a>
+            ))}
+          </div>
         </div>
         <div>
           <div className="font-mono-tag mb-4">Navigate</div>
