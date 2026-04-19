@@ -1,0 +1,10 @@
+# Hostinger Business — Node.js Selector (Passenger) routing.
+# Passenger picks up the Node app automatically once you configure it in
+# hPanel → Advanced → Node.js. This .htaccess just makes sure Apache hands
+# every request to Passenger instead of trying to serve files directly.
+PassengerEnabled on
+
+# If Passenger ever fails to start, fall back to a clear error instead of
+# Apache exposing the raw filesystem.
+DirectoryIndex disabled
+Options -Indexes
