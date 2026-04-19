@@ -14,16 +14,7 @@ export function SiteFooter() {
     <footer className="border-t border-border/60 bg-surface/40 mt-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-16 grid gap-12 md:grid-cols-4">
         <div className="md:col-span-2">
-          <div className="flex items-center gap-3 mb-4">
-            <img
-              src={logo}
-              alt="BlueGuardia"
-              className="h-14 w-auto drop-shadow-[0_0_22px_hsl(var(--primary)/0.5)]"
-            />
-            <span className="text-2xl font-semibold tracking-tight text-foreground">
-              Blue<span className="text-primary">Guardia</span>
-            </span>
-          </div>
+          <img src={logo} alt="BlueGuardia" className="h-10 w-auto mb-4" />
           <p className="text-sm text-muted-foreground max-w-md">
             Cybersecurity training built by practitioners. Forging the next generation
             of SOC Analysts and Penetration Testers.
