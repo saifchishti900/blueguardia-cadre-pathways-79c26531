@@ -1,5 +1,13 @@
 import { Link } from "@tanstack/react-router";
+import { Linkedin, Instagram, Facebook, Twitter } from "lucide-react";
 import logo from "@/assets/logo.png";
+
+const socials = [
+  { href: "https://linkedin.com", label: "LinkedIn", Icon: Linkedin },
+  { href: "https://instagram.com", label: "Instagram", Icon: Instagram },
+  { href: "https://facebook.com", label: "Facebook", Icon: Facebook },
+  { href: "https://twitter.com", label: "Twitter", Icon: Twitter },
+];
 
 export function SiteFooter() {
   return (
