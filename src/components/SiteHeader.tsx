@@ -30,7 +30,7 @@ const navItems: Array<{
   },
   { label: "Trainers", to: "/trainers" },
   { label: "Success Stories", to: "/success-stories" },
-  { label: "Reviews", to: "/reviews" },
+  // { label: "Reviews", to: "/reviews" },
   { label: "Contact", to: "/contact" },
 ];
 
