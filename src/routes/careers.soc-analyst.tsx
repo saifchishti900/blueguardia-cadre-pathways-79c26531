@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Shield, Eye, Siren, FileSearch, Activity, Bell, Lock, Database, ArrowUpRight, Download } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { CyberTree } from "@/components/CyberTree";
+import { SocPanel } from "@/components/SocPanel";
 import { APPLY_URL } from "@/components/SiteHeader";
 
 export const Route = createFileRoute("/careers/soc-analyst")({
@@ -21,10 +22,10 @@ function SocPage() {
     <div>
       <section className="relative pt-20 pb-24 overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-20" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
           <Reveal>
             <div className="font-mono-tag mb-4">// CAREER PATH / BLUE TEAM</div>
-            <h1 className="text-5xl md:text-7xl font-bold leading-[1.05] max-w-4xl">
+            <h1 className="text-5xl md:text-7xl font-bold leading-[1.05]">
               SOC Analyst.
               <br />
               <span className="text-gradient">First responder of the digital world.</span>
@@ -34,6 +35,9 @@ function SocPage() {
               reconstructing the kill chain, and stopping the breach before it spreads.
             </p>
           </Reveal>
+          <div className="hidden lg:block">
+            <SocPanel />
+          </div>
         </div>
       </section>
 
