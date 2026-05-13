@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Shield, Sword, ArrowUpRight, AlertTriangle, TrendingUp, Users, Target } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
+import { HeroTerminal } from "@/components/HeroTerminal";
 import { APPLY_URL } from "@/components/SiteHeader";
 
 export const Route = createFileRoute("/")({
