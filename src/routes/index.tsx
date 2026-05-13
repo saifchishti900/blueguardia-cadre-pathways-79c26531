@@ -31,12 +31,13 @@ function HomePage() {
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-30" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-20 w-full">
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-20 w-full grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-10 items-center">
+          <div>
           <Reveal>
             <div className="font-mono-tag mb-6">// CADRE 02 — ENROLLMENT OPEN</div>
           </Reveal>
           <Reveal delay={0.1}>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-tight max-w-5xl">
+            <h1 className="text-5xl md:text-7xl lg:text-7xl xl:text-8xl font-bold leading-[0.95] tracking-tight">
               Forge your career
               <br />
               in <span className="text-gradient">cybersecurity.</span>
@@ -76,6 +77,11 @@ function HomePage() {
               <div className="h-px bg-border flex-1 max-w-[200px]" />
             </div>
           </Reveal>
+          </div>
+
+          <div className="hidden lg:block">
+            <HeroTerminal />
+          </div>
         </div>
       </section>
 
