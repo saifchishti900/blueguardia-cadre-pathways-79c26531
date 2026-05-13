@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, ArrowUpRight } from "lucide-react";
 import logo from "@/assets/logo.png";
 
-const APPLY_URL = "https://docs.google.com/forms/d/e/SAMPLE/viewform";
+const APPLY_URL = "https://docs.google.com/forms/d/e/1FAIpQLScQMUmb0Ywue2EhnQ0UelJz96N4dYYK_VmeOBc4u2FnU-fraw/viewform?usp=sharing&ouid=109210716830392689531";
 
 const navItems: Array<{
   label: string;
@@ -30,7 +30,7 @@ const navItems: Array<{
   },
   { label: "Trainers", to: "/trainers" },
   { label: "Success Stories", to: "/success-stories" },
-  { label: "Reviews", to: "/reviews" },
+  // { label: "Reviews", to: "/reviews" },
   { label: "Contact", to: "/contact" },
 ];
 

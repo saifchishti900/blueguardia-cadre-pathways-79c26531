@@ -1,12 +1,11 @@
 import { Link } from "@tanstack/react-router";
-import { Linkedin, Instagram, Facebook, Twitter } from "lucide-react";
+import { Linkedin, Instagram, Facebook } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const socials = [
-  { href: "https://linkedin.com", label: "LinkedIn", Icon: Linkedin },
-  { href: "https://instagram.com", label: "Instagram", Icon: Instagram },
-  { href: "https://facebook.com", label: "Facebook", Icon: Facebook },
-  { href: "https://twitter.com", label: "Twitter", Icon: Twitter },
+  { href: "https://www.linkedin.com/company/blueguardia", label: "LinkedIn", Icon: Linkedin },
+  { href: "https://www.instagram.com/blue.guardia?igsh=enR2cGJrcnFrcGJm", label: "Instagram", Icon: Instagram },
+  { href: "https://www.facebook.com/share/1FdCDM6kXu/", label: "Facebook", Icon: Facebook },
 ];
 
 export function SiteFooter() {
