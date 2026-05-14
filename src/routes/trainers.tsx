@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
 import { Award, Briefcase, GraduationCap } from "lucide-react";
+import { MentorPanel } from "@/components/MentorPanel";
 
 export const Route = createFileRoute("/trainers")({
   head: () => ({
@@ -46,15 +47,18 @@ function TrainersPage() {
     <div>
       <section className="relative pt-20 pb-16 overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-20" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
           <Reveal>
             <div className="font-mono-tag mb-4">// TRAINER PROFILES</div>
-            <h1 className="text-5xl md:text-7xl font-bold leading-[1.05] max-w-4xl">
+            <h1 className="text-5xl md:text-7xl font-bold leading-[1.05]">
               Taught by <span className="text-gradient">practitioners.</span>
               <br />
               Not lecturers.
             </h1>
           </Reveal>
+          <div className="hidden lg:block">
+            <MentorPanel />
+          </div>
         </div>
       </section>
 

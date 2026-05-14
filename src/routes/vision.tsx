@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
 import { Eye, Crosshair, ScanLine, Brain, Factory, ScrollText } from "lucide-react";
+import { RoadmapPanel } from "@/components/RoadmapPanel";
 
 export const Route = createFileRoute("/vision")({
   head: () => ({
@@ -28,20 +29,23 @@ function VisionPage() {
     <div>
       <section className="relative pt-20 pb-24 overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-20" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
           <Reveal>
             <div className="font-mono-tag mb-4">// THE LONG GAME</div>
-            <h1 className="text-5xl md:text-7xl font-bold leading-[1.05] max-w-5xl">
+            <h1 className="text-5xl md:text-7xl font-bold leading-[1.05]">
               From training institute
               <br />
               to <span className="text-gradient">full-service MSSP.</span>
             </h1>
-            <p className="mt-8 text-xl text-muted-foreground max-w-3xl leading-relaxed">
+            <p className="mt-8 text-xl text-muted-foreground max-w-2xl leading-relaxed">
               BlueGuardia begins as a cybersecurity training institute — but our vision
               is bigger. We are building the practitioners today who will run the security
               operations of tomorrow, under our own roof.
             </p>
           </Reveal>
+          <div className="hidden lg:block">
+            <RoadmapPanel />
+          </div>
         </div>
       </section>
 

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
 import { Download, Award, Shield, Sword } from "lucide-react";
+import { LabPanel } from "@/components/LabPanel";
 
 export const Route = createFileRoute("/training")({
   head: () => ({
@@ -54,10 +55,10 @@ function TrainingPage() {
     <div>
       <section className="relative pt-20 pb-16 overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-20" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
           <Reveal>
             <div className="font-mono-tag mb-4">// VIRTUAL TRAINING</div>
-            <h1 className="text-5xl md:text-7xl font-bold leading-[1.05] max-w-4xl">
+            <h1 className="text-5xl md:text-7xl font-bold leading-[1.05]">
               Train from anywhere.
               <br />
               <span className="text-gradient">Live & hands-on.</span>
@@ -67,6 +68,9 @@ function TrainingPage() {
               and certifications recognised by hiring SOC and offensive security teams.
             </p>
           </Reveal>
+          <div className="hidden lg:block">
+            <LabPanel />
+          </div>
         </div>
       </section>
 
