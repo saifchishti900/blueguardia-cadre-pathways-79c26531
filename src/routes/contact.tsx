@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
-import { Mail, Phone, MapPin, Linkedin, Twitter, Send } from "lucide-react";
+import { Mail, Phone, Globe, Linkedin, Instagram, Facebook, Send } from "lucide-react";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -39,8 +39,8 @@ function ContactPage() {
             <div className="space-y-6">
               {[
                 { icon: Mail, label: "Email", v: "hello@blueguardia.com" },
-                { icon: Phone, label: "Phone", v: "+1 (555) 010-2025" },
-                { icon: MapPin, label: "HQ", v: "Cyber District, Tower 4, Lvl 12" },
+                { icon: Phone, label: "Phone", v: "+92 342 7403800" },
+                { icon: Globe, label: "Where we operate", v: "100% online — wherever the internet reaches, we do. BlueGuardia is a fully virtual cybersecurity training institute." },
               ].map((c) => (
                 <div key={c.label} className="flex items-start gap-5 p-6 rounded-lg border border-border bg-surface">
                   <div className="h-11 w-11 rounded-md bg-primary/15 flex items-center justify-center text-primary shrink-0">
@@ -57,12 +57,16 @@ function ContactPage() {
                 <div className="font-mono-tag mb-3">FOLLOW</div>
                 <div className="flex gap-3">
                   {[
-                    { icon: Linkedin, href: "#" },
-                    { icon: Twitter, href: "#" },
-                  ].map((s, i) => (
+                    { icon: Linkedin, href: "https://www.linkedin.com/company/blueguardia", label: "LinkedIn" },
+                    { icon: Instagram, href: "https://www.instagram.com/blue.guardia?igsh=enR2cGJrcnFrcGJm", label: "Instagram" },
+                    { icon: Facebook, href: "https://www.facebook.com/share/1FdCDM6kXu/", label: "Facebook" },
+                  ].map((s) => (
                     <a
-                      key={i}
+                      key={s.label}
                       href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={s.label}
                       className="h-11 w-11 rounded-md border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors"
                     >
                       <s.icon className="h-5 w-5" />

@@ -1,11 +1,22 @@
 import { motion } from "framer-motion";
-import { GraduationCap, Award, Users } from "lucide-react";
+import { GraduationCap, ShieldCheck, Swords, Target, Terminal } from "lucide-react";
 
-const stats = [
-  { k: "30+", v: "Years combined experience" },
-  { k: "12", v: "Industry certifications" },
-  { k: "1000+", v: "Analysts mentored" },
-  { k: "80+", v: "Real engagements led" },
+const pillars = [
+  {
+    icon: ShieldCheck,
+    title: "Defenders who've held the line",
+    desc: "Trainers with hands-on SOC, DFIR and detection-engineering experience — not slide-deck instructors.",
+  },
+  {
+    icon: Swords,
+    title: "Attackers who've broken in",
+    desc: "Offensive specialists who have run real engagements, written real reports, and shipped real findings.",
+  },
+  {
+    icon: Target,
+    title: "Built around your outcome",
+    desc: "Mentorship, lab reviews, and career guidance designed to make you employable — not just certified.",
+  },
 ];
 
 const certs = ["OSCP", "OSEP", "OSWE", "GCIA", "GCFA", "CISSP", "CRTO", "CEH"];
@@ -23,32 +34,37 @@ export function MentorPanel() {
         <div className="flex items-center justify-between px-4 py-3 border-b border-border/60 bg-background/40">
           <div className="flex items-center gap-2 font-mono text-[11px] text-muted-foreground tracking-wider">
             <GraduationCap className="h-3.5 w-3.5 text-primary" />
-            Mentor Network · Signal Check
+            Mentor Network · Operating Principles
           </div>
           <div className="flex items-center gap-1.5 text-[10px] font-mono text-terminal">
             <span className="h-1.5 w-1.5 rounded-full bg-terminal animate-pulse" />
-            VERIFIED
+            ACTIVE
           </div>
         </div>
 
-        <div className="grid grid-cols-2 border-b border-border/60">
-          {stats.map((s, i) => (
+        <div className="divide-y divide-border/60">
+          {pillars.map((p, i) => (
             <motion.div
-              key={s.k}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 + i * 0.1 }}
-              className={`px-4 py-4 ${i % 2 === 0 ? "border-r border-border/60" : ""} ${i < 2 ? "border-b border-border/60" : ""}`}
+              key={p.title}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.25 + i * 0.12 }}
+              className="flex gap-3 px-4 py-4"
             >
-              <div className="text-2xl font-bold text-primary">{s.k}</div>
-              <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground mt-1">{s.v}</div>
+              <div className="h-9 w-9 shrink-0 rounded-md border border-primary/30 bg-primary/10 flex items-center justify-center text-primary">
+                <p.icon className="h-4 w-4" />
+              </div>
+              <div className="min-w-0">
+                <div className="text-sm font-semibold text-foreground leading-snug">{p.title}</div>
+                <div className="mt-1 text-[12px] text-muted-foreground leading-relaxed">{p.desc}</div>
+              </div>
             </motion.div>
           ))}
         </div>
 
-        <div className="p-4">
-          <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground mb-3 flex items-center gap-2">
-            <Award className="h-3 w-3 text-primary" /> Certification Stack
+        <div className="p-4 border-t border-border/60">
+          <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground mb-3">
+            Certification stack our trainers hold
           </div>
           <div className="flex flex-wrap gap-1.5">
             {certs.map((c, i) => (
@@ -56,30 +72,23 @@ export function MentorPanel() {
                 key={c}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.7 + i * 0.06 }}
+                transition={{ delay: 0.7 + i * 0.05 }}
                 className="px-2 py-1 rounded border border-primary/30 bg-primary/5 text-primary font-mono text-[11px]"
               >
                 {c}
               </motion.span>
             ))}
           </div>
-
-          <div className="mt-5 p-3 rounded-md border border-border/60 bg-background/30 font-mono text-[11px] text-muted-foreground leading-relaxed">
-            <span className="text-terminal">{"// "}</span>
-            Practitioners. Not lecturers. Every trainer has shipped detections,
-            led engagements, and broken into production environments — with
-            permission.
-          </div>
         </div>
 
-        <div className="grid grid-cols-3 border-t border-border/60 text-[10px] font-mono uppercase tracking-wider">
-          <div className="flex items-center gap-2 px-3 py-2 border-r border-border/60">
-            <Users className="h-3 w-3 text-primary" /> Tier-3 SOC
-          </div>
-          <div className="flex items-center gap-2 px-3 py-2 border-r border-border/60">
-            <Award className="h-3 w-3 text-terminal" /> Red Team Lead
-          </div>
-          <div className="px-3 py-2 text-muted-foreground">SANS · OffSec</div>
+        <div className="px-4 py-3 border-t border-border/60 bg-background/30 font-mono text-[11px] text-muted-foreground leading-relaxed flex gap-2">
+          <Terminal className="h-3.5 w-3.5 text-terminal mt-0.5 shrink-0" />
+          <span>
+            <span className="text-terminal">{"// "}</span>
+            We don't measure ourselves in vanity metrics. We measure ourselves in
+            cadets who walk into their first SOC shift or first engagement and
+            already know what to do.
+          </span>
         </div>
       </motion.div>
     </div>

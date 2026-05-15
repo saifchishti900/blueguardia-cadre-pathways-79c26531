@@ -122,7 +122,7 @@ function TrainingPage() {
                       <div className="aspect-[4/3] rounded-lg border-2 border-primary/30 bg-background relative overflow-hidden p-6 flex flex-col justify-between">
                         <div className="absolute inset-0 grid-bg opacity-10" />
                         <div className="relative">
-                          <div className="font-mono text-[10px] text-primary tracking-widest">BLUEGUARDIA / CADRE 02</div>
+                          <div className="font-mono text-[10px] text-primary tracking-widest">BLUEGUARDIA / CADRE 01</div>
                           <Award className="h-10 w-10 text-primary mt-3" />
                         </div>
                         <div className="relative">

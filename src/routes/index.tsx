@@ -34,7 +34,7 @@ function HomePage() {
         <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-20 w-full grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-10 items-center">
           <div>
           <Reveal>
-            <div className="font-mono-tag mb-6">// CADRE 02 — ENROLLMENT OPEN</div>
+            <div className="font-mono-tag mb-6">// CADRE 01 — ENROLLMENT OPEN</div>
           </Reveal>
           <Reveal delay={0.1}>
             <h1 className="text-5xl md:text-7xl lg:text-7xl xl:text-8xl font-bold leading-[0.95] tracking-tight">
@@ -59,7 +59,7 @@ function HomePage() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3.5 rounded-md font-medium hover:bg-primary/90 transition-all hover:scale-105"
               >
-                Apply to Cadre 02
+                Apply to Cadre 01
                 <ArrowUpRight className="h-4 w-4" />
               </a>
               <Link
@@ -271,7 +271,7 @@ function HomePage() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-4 rounded-md text-lg font-medium hover:bg-primary/90 transition-all hover:scale-105"
               >
-                Apply to Cadre 02
+                Apply to Cadre 01
                 <ArrowUpRight className="h-5 w-5" />
               </a>
             </motion.div>
