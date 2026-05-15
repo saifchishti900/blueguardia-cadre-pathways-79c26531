@@ -7,7 +7,7 @@ const boot = [
   { p: "[ OK ]", c: "text-terminal", t: "Provisioning Splunk + Elastic SIEM stack" },
   { p: "[ OK ]", c: "text-terminal", t: "Deploying vulnerable AD forest · 3 hosts" },
   { p: "[ .. ]", c: "text-primary", t: "Connecting cadet → mentor live session" },
-  { p: "[ OK ]", c: "text-terminal", t: "Lab ready · session BG-CADRE-02-LAB-17" },
+  { p: "[ OK ]", c: "text-terminal", t: "Lab ready · session BG-CADRE-01-LAB-17" },
 ];
 
 export function LabPanel() {

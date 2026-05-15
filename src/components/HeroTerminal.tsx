@@ -32,7 +32,7 @@ export function HeroTerminal() {
             <span className="h-2.5 w-2.5 rounded-full bg-terminal/70" />
           </div>
           <div className="font-mono text-[11px] text-muted-foreground tracking-wider">
-            blueguardia@cadre-02 ~ /ops/live
+            blueguardia@cadre-01 ~ /ops/live
           </div>
           <div className="flex items-center gap-1.5 text-[10px] font-mono text-terminal">
             <span className="h-1.5 w-1.5 rounded-full bg-terminal animate-pulse" />
