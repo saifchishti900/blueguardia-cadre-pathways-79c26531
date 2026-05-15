@@ -22,6 +22,8 @@ const tracks = [
     tag: "BLUE TEAM",
     title: "SOC Analyst Track",
     desc: "Two months of specialised defensive training following the foundational month — SIEM, EDR, threat hunting, IR and detection engineering.",
+    outline: "/brochures/BlueGuardia-SOC-Course-Outline.pdf",
+    brochure: "/brochures/BlueGuardia-SOC-Brochure.pdf",
     modules: [
       "Cyber Foundations (Month 01)",
       "SIEM Engineering & Log Analysis",
@@ -38,6 +40,8 @@ const tracks = [
     tag: "RED TEAM",
     title: "Penetration Tester Track",
     desc: "Two months of offensive security following the foundational month — recon, exploitation, post-ex and reporting using industry tooling.",
+    outline: "/brochures/BlueGuardia-Pentesting-Course-Outline.pdf",
+    brochure: "/brochures/BlueGuardia-Pentesting-Brochure.pdf",
     modules: [
       "Cyber Foundations (Month 01)",
       "OSINT & Reconnaissance",
@@ -102,10 +106,10 @@ function TrainingPage() {
                     </ul>
 
                     <div className="flex flex-wrap gap-3" id={idx === 0 ? "brochure" : undefined}>
-                      <a href="#" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-3 rounded-md font-medium hover:bg-primary/90 hover:scale-105 transition-all">
+                      <a href={t.outline} download target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-3 rounded-md font-medium hover:bg-primary/90 hover:scale-105 transition-all">
                         <Download className="h-4 w-4" /> Course Outline
                       </a>
-                      <a href="#" className="inline-flex items-center gap-2 border border-border px-5 py-3 rounded-md font-medium hover:bg-surface-elevated">
+                      <a href={t.brochure} download target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-border px-5 py-3 rounded-md font-medium hover:bg-surface-elevated">
                         <Download className="h-4 w-4" /> Brochure
                       </a>
                     </div>

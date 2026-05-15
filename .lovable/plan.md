@@ -1,20 +1,19 @@
+## Goal
+Make the "Course Outline" and "Brochure" buttons on `/training` actually download the four uploaded PDFs (SOC + Pentester).
 
-User wants Node.js Selector deploy on Hostinger Business. Keep visuals identical. Need to:
+## Steps
 
-1. Switch Vite/TanStack Start preset from Cloudflare Workers → `node-server`. The `@lovable.dev/vite-tanstack-config` wrapper currently bakes in `cloudflare`. I need to override it. Looking at the config: `defineConfig()` from that wrapper. I'll need to pass overrides — based on TanStack Start docs, the preset is set via `tanstackStart({ target: 'node-server' })`. Since the wrapper auto-includes the plugin, the cleanest path is to switch from the wrapper to a vanilla Vite config OR pass an override if supported.
+1. **Copy PDFs into `public/brochures/`** (so they're served as static files at `/brochures/...` on every host — Lovable preview, Vercel, and the static Hostinger build):
+   - `public/brochures/BlueGuardia-SOC-Course-Outline.pdf`
+   - `public/brochures/BlueGuardia-SOC-Brochure.pdf`
+   - `public/brochures/BlueGuardia-Pentesting-Course-Outline.pdf`
+   - `public/brochures/BlueGuardia-Pentesting-Brochure.pdf`
 
-2. Remove/ignore `wrangler.jsonc` (rename to `.bak` or delete).
+2. **Update `src/routes/training.tsx`**:
+   - Add `outline` and `brochure` URL fields to each entry in the `tracks` array, pointing to the files above (SOC for `id: "soc"`, Pentesting for `id: "pen"`).
+   - Replace the two `href="#"` placeholders with `href={t.outline}` and `href={t.brochure}`.
+   - Add `download` and `target="_blank" rel="noopener"` so clicking saves the file (and opens in a new tab if the browser previews PDFs).
 
-3. Update `package.json` scripts: add `start` script that runs the built node server (`node .output/server/index.mjs`), and ensure `build` produces node output.
-
-4. Add `app.js` wrapper (Passenger entry) that imports `.output/server/index.mjs` — Hostinger Node Selector needs a startup file at project root.
-
-5. Add `DEPLOY-HOSTINGER.md` with: build locally → upload `.output/`, `app.js`, `package.json`, `package-lock.json` → set Node Selector startup file `app.js`, app root, Node 20 → run NPM Install → restart.
-
-6. Visuals: zero changes to any `src/` page/component/style.
-
-Concerns: the `@lovable.dev/vite-tanstack-config` wrapper hardcodes the cloudflare plugin. It accepts overrides via `defineConfig({ vite: {...} })` but the TanStack Start preset target may not be overridable. Worst case I bypass the wrapper for production builds via an env flag, OR write a parallel `vite.config.node.ts` used only for the Hostinger build. That keeps the Lovable preview working unchanged.
-
-Plan: dual-config approach — keep `vite.config.ts` for Lovable preview, add `vite.config.hostinger.ts` for the Node build. Add `build:hostinger` script.
-
-Keep plan short.
+## Out of scope
+- No visual/layout changes.
+- No changes to other pages or to the static/Hostinger build configs (PDFs in `public/` are picked up automatically by all three build modes).
