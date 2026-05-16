@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
-import { Award, Briefcase, GraduationCap } from "lucide-react";
+import { Award, Briefcase, GraduationCap, UserRound, Star } from "lucide-react";
 import { MentorPanel } from "@/components/MentorPanel";
+import trainerSaif from "@/assets/trainer-saif.jpg";
 
 export const Route = createFileRoute("/trainers")({
   head: () => ({
@@ -9,36 +10,59 @@ export const Route = createFileRoute("/trainers")({
       { title: "Trainers — BlueGuardia" },
       { name: "description", content: "Meet the practitioners building the next generation of cybersecurity defenders." },
       { property: "og:title", content: "Our Trainers — BlueGuardia" },
-      { property: "og:description", content: "Industry practitioners with decades of combined cyber experience." },
+      { property: "og:description", content: "Industry practitioners with real-world cyber experience." },
     ],
   }),
   component: TrainersPage,
 });
 
-const trainers = [
+type Trainer = {
+  name: string;
+  title: string;
+  eyebrow?: string;
+  img?: string;
+  anonymous?: boolean;
+  featured?: boolean;
+  certs: string[];
+  exp: string;
+  achievements: string[];
+};
+
+const trainers: Trainer[] = [
   {
-    name: "Aisha Rahman",
-    title: "Lead SOC Trainer",
-    img: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&h=600&fit=crop&crop=face",
-    certs: ["GCIA", "GCFA", "CISSP", "Splunk Certified Architect"],
-    exp: "12+ years in security operations, formerly Tier-3 SOC Lead at a Fortune 100 financial institution. Built detection-as-code pipelines covering 10,000+ endpoints.",
-    achievements: ["Authored 200+ Sigma rules adopted by SOC Prime", "Speaker at SANS DFIR Summit 2023", "Mentored 400+ SOC analysts"],
+    name: "Saif Ur Rehman",
+    title: "Founder & Lead SOC Trainer",
+    eyebrow: "FOUNDER",
+    img: trainerSaif,
+    featured: true,
+    certs: [
+      "Microsoft Certified: Security Operations Analyst Associate",
+      "CompTIA Security+ (In progress)",
+    ],
+    exp: "Cybersecurity professional with 2+ years of dedicated SOC experience across the banking and global mining sectors. Proven track record in leading Incident Response (IR) for targeted attacks, spanning the full lifecycle from root-cause analysis to executive reporting. Expert in threat modeling and developing complex detection use cases within enterprise-grade security stacks to proactively mitigate adversary activity.",
+    achievements: [
+      "Training juniors at current company for complex SOC tasks",
+      "Lead incident response activity",
+      "Lead POCs with industry-leading global cybersecurity companies",
+      "Major part of DLP control deployment at one of the top 5 banks",
+    ],
   },
   {
-    name: "Marcus Chen",
-    title: "Lead Offensive Security Trainer",
-    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=600&fit=crop&crop=face",
-    certs: ["OSCP", "OSEP", "OSWE", "CRTO"],
-    exp: "10+ years in red team operations and adversary emulation. Former Senior Pentester at a Big 4 consulting firm, led 80+ full-scope engagements across finance and healthcare.",
-    achievements: ["Hall of Fame: Google, Microsoft, Apple bug bounty", "Published 3 CVEs in enterprise software", "DEF CON CTF finalist"],
-  },
-  {
-    name: "Priya Iyer",
-    title: "Foundations & Network Security Trainer",
-    img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&h=600&fit=crop&crop=face",
-    certs: ["CCNP Security", "CEH", "CISA"],
-    exp: "8+ years teaching foundational networking, OS internals and applied cryptography. Former NOC engineer turned security instructor.",
-    achievements: ["University guest lecturer at 3 top engineering schools", "Built BlueGuardia's foundational lab platform", "Trained 600+ entry-level analysts"],
+    name: "Harry Najam",
+    title: "Lead Pentest Trainer",
+    anonymous: true,
+    certs: [
+      "TCM Security PNPT",
+      "eLearnSecurity eJPT",
+      "TryHackMe Jr Penetration Tester",
+      "PentesterLab Web Application Security (White Badge)",
+    ],
+    exp: "Penetration Tester with 4 years experience, delivering pentest and red team assessments across aerospace, telecom, banking, media, and tech sectors. Specialized in Active Directory exploitation, external/internal network testing, web app pentesting, ADCS attacks, and phishing campaigns. Develops custom Python tooling and documents end-to-end attack chains with remediation guidance.",
+    achievements: [
+      "Reported multiple complete network compromises for aerospace, fintech and defense clients",
+      "Contributed to development of commercial network scanner tools",
+      "Created multiple red team tools for ADCS exploitation",
+    ],
   },
 ];
 
@@ -63,38 +87,79 @@ function TrainersPage() {
       </section>
 
       <section className="py-16">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10 space-y-8">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 space-y-10">
           {trainers.map((t, i) => (
             <Reveal key={t.name} delay={i * 0.1}>
-              <div className="grid lg:grid-cols-3 gap-0 rounded-2xl border border-border bg-surface overflow-hidden">
+              <div
+                className={`grid lg:grid-cols-3 gap-0 rounded-2xl border bg-surface overflow-hidden ${
+                  t.featured
+                    ? "border-primary/50 shadow-[0_30px_80px_-30px_oklch(0.72_0.06_240/0.45)]"
+                    : "border-border"
+                }`}
+              >
                 <div className="aspect-square lg:aspect-auto bg-surface-elevated relative overflow-hidden">
-                  <img src={t.img} alt={t.name} className="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4">
+                  {t.anonymous ? (
+                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-background to-surface-elevated p-6">
+                      <div className="h-24 w-24 rounded-full border border-border bg-background/60 flex items-center justify-center text-muted-foreground">
+                        <UserRound className="h-12 w-12" />
+                      </div>
+                      <div className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground text-center">
+                        Identity withheld
+                        <br />
+                        by request
+                      </div>
+                    </div>
+                  ) : (
+                    <img
+                      src={t.img}
+                      alt={t.name}
+                      className="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
                     <div className="font-mono-tag">{`TRAINER_0${i + 1}`}</div>
+                    {t.featured && (
+                      <div className="inline-flex items-center gap-1 px-2 py-1 rounded border border-primary/40 bg-primary/10 text-primary font-mono text-[10px] uppercase tracking-wider">
+                        <Star className="h-3 w-3" /> Founder
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="lg:col-span-2 p-8 lg:p-12">
-                  <h2 className="text-3xl md:text-4xl font-bold">{t.name}</h2>
+                  {t.eyebrow && (
+                    <div className="font-mono-tag mb-2 text-primary">{t.eyebrow}</div>
+                  )}
+                  <h2 className={`font-bold ${t.featured ? "text-4xl md:text-5xl" : "text-3xl md:text-4xl"}`}>
+                    {t.name}
+                  </h2>
                   <div className="text-primary mt-2">{t.title}</div>
 
                   <div className="mt-8 grid sm:grid-cols-2 gap-6">
                     <div>
-                      <div className="flex items-center gap-2 font-mono-tag mb-3"><GraduationCap className="h-3.5 w-3.5" /> Certifications</div>
+                      <div className="flex items-center gap-2 font-mono-tag mb-3">
+                        <GraduationCap className="h-3.5 w-3.5" /> Certifications
+                      </div>
                       <div className="flex flex-wrap gap-2">
                         {t.certs.map((c) => (
-                          <span key={c} className="text-xs px-2.5 py-1 rounded border border-border bg-background/50 font-mono">{c}</span>
+                          <span key={c} className="text-xs px-2.5 py-1 rounded border border-border bg-background/50 font-mono">
+                            {c}
+                          </span>
                         ))}
                       </div>
                     </div>
                     <div>
-                      <div className="flex items-center gap-2 font-mono-tag mb-3"><Briefcase className="h-3.5 w-3.5" /> Experience</div>
+                      <div className="flex items-center gap-2 font-mono-tag mb-3">
+                        <Briefcase className="h-3.5 w-3.5" /> Experience
+                      </div>
                       <p className="text-sm text-muted-foreground leading-relaxed">{t.exp}</p>
                     </div>
                   </div>
 
                   <div className="mt-6">
-                    <div className="flex items-center gap-2 font-mono-tag mb-3"><Award className="h-3.5 w-3.5" /> Achievements</div>
+                    <div className="flex items-center gap-2 font-mono-tag mb-3">
+                      <Award className="h-3.5 w-3.5" /> Achievements
+                    </div>
                     <ul className="space-y-1.5">
                       {t.achievements.map((a) => (
                         <li key={a} className="text-sm text-foreground/80 flex gap-2">

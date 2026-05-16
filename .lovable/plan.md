@@ -1,19 +1,33 @@
-## Goal
-Make the "Course Outline" and "Brochure" buttons on `/training` actually download the four uploaded PDFs (SOC + Pentester).
+## Changes
 
-## Steps
+### a) Trainers page (`src/routes/trainers.tsx`)
 
-1. **Copy PDFs into `public/brochures/`** (so they're served as static files at `/brochures/...` on every host — Lovable preview, Vercel, and the static Hostinger build):
-   - `public/brochures/BlueGuardia-SOC-Course-Outline.pdf`
-   - `public/brochures/BlueGuardia-SOC-Brochure.pdf`
-   - `public/brochures/BlueGuardia-Pentesting-Course-Outline.pdf`
-   - `public/brochures/BlueGuardia-Pentesting-Brochure.pdf`
+Replace the `trainers` array with two real entries (drop the third dummy trainer):
 
-2. **Update `src/routes/training.tsx`**:
-   - Add `outline` and `brochure` URL fields to each entry in the `tracks` array, pointing to the files above (SOC for `id: "soc"`, Pentesting for `id: "pen"`).
-   - Replace the two `href="#"` placeholders with `href={t.outline}` and `href={t.brochure}`.
-   - Add `download` and `target="_blank" rel="noopener"` so clicking saves the file (and opens in a new tab if the browser previews PDFs).
+1. **Saif Ur Rehman** — Founder & Lead SOC Trainer
+   - Copy uploaded `user-uploads://WhatsApp_Image_2026-05-16_at_10.12.30_AM.jpeg` → `src/assets/trainer-saif.jpg` and import it.
+   - Certs: Microsoft Certified Security Operations Analyst Associate, CompTIA Security+ (In progress)
+   - Experience + achievements as supplied by user.
+   - Add a `featured: true` flag and render this card more prominently: larger photo column, a "FOUNDER" tag/badge, accent border (`border-primary/40`), and a "Founder" eyebrow label above the name. Keep the existing card markup for the other trainer.
 
-## Out of scope
-- No visual/layout changes.
-- No changes to other pages or to the static/Hostinger build configs (PDFs in `public/` are picked up automatically by all three build modes).
+2. **Harry Najam** — Lead Pentest Trainer
+   - No real photo (anonymous). Render an anonymous placeholder block in place of the `<img>`: dark surface with a centered `UserRound` (lucide) icon + "Identity withheld by request" caption. Keep the same TRAINER_02 tag.
+   - Certs + experience + achievements as supplied.
+
+Image handling note: import the founder photo via `@/assets/...` (ES6 import), object-cover, keep the grayscale → color hover.
+
+### b) Career path download buttons
+
+- `src/routes/careers.soc-analyst.tsx` (lines 188-200): replace the two `href="#"` placeholders with the actual brochure links and add `download`, `target="_blank"`, `rel="noopener noreferrer"`:
+  - Download Brochure → `/brochures/BlueGuardia-SOC-Brochure.pdf`
+  - Training Outline → `/brochures/BlueGuardia-SOC-Course-Outline.pdf`
+- `src/routes/careers.pentester.tsx` (lines 183-189): same treatment with:
+  - Download Brochure → `/brochures/BlueGuardia-Pentesting-Brochure.pdf`
+  - Training Outline → `/brochures/BlueGuardia-Pentesting-Course-Outline.pdf`
+
+### c) MentorPanel cleanup (`src/components/MentorPanel.tsx`)
+
+Remove the bottom "Certification stack our trainers hold" block — delete the entire `<div className="p-4 border-t border-border/60">…</div>` containing the `certs` chips, and remove the now-unused `certs` constant.
+
+### Out of scope
+No layout/visual changes elsewhere; PDFs already exist in `public/brochures/`.
