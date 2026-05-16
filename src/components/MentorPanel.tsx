@@ -19,8 +19,6 @@ const pillars = [
   },
 ];
 
-const certs = ["OSCP", "OSEP", "OSWE", "GCIA", "GCFA", "CISSP", "CRTO", "CEH"];
-
 export function MentorPanel() {
   return (
     <div className="relative w-full max-w-xl mx-auto" aria-hidden="true">
