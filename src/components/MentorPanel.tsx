@@ -60,25 +60,6 @@ export function MentorPanel() {
           ))}
         </div>
 
-        <div className="p-4 border-t border-border/60">
-          <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground mb-3">
-            Certification stack our trainers hold
-          </div>
-          <div className="flex flex-wrap gap-1.5">
-            {certs.map((c, i) => (
-              <motion.span
-                key={c}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.7 + i * 0.05 }}
-                className="px-2 py-1 rounded border border-primary/30 bg-primary/5 text-primary font-mono text-[11px]"
-              >
-                {c}
-              </motion.span>
-            ))}
-          </div>
-        </div>
-
         <div className="px-4 py-3 border-t border-border/60 bg-background/30 font-mono text-[11px] text-muted-foreground leading-relaxed flex gap-2">
           <Terminal className="h-3.5 w-3.5 text-terminal mt-0.5 shrink-0" />
           <span>
